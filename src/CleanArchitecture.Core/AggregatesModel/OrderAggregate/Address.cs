@@ -11,6 +11,8 @@ namespace CleanArchitecture.Core.AggregatesModel.OrderAggregate
         public String Country { get; private set; }
         public String ZipCode { get; private set; }
 
+        private Address() {}
+
         public Address(string street, string city, string state, string country, string zipcode)
         {
             Street = street;
