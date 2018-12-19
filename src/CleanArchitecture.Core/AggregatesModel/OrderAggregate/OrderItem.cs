@@ -6,9 +6,9 @@ namespace CleanArchitecture.Core.AggregatesModel.OrderAggregate
 {
     public class OrderItem : Entity
     {
-        private string _productName;
-        private decimal _unitPrice;
-        private int _units;
+        public string ProductName { get; private set; }
+        public decimal UnitPrice { get; private set; }
+        public int Units { get; private set; }
 
         public int ProductId { get; private set; }
 
@@ -21,31 +21,21 @@ namespace CleanArchitecture.Core.AggregatesModel.OrderAggregate
 
             ProductId = productId;
 
-            _productName = productName;
-            _unitPrice = unitPrice;
-            _units = units;
+            ProductName = productName;
+            UnitPrice = unitPrice;
+            Units = units;
         }
 
-        public int GetUnits()
-        {
-            return _units;
-        }
-
-        public decimal GetUnitPrice()
-        {
-            return _unitPrice;
-        }
-
-        public string GetOrderItemProductName() => _productName;
+        public string GetOrderItemProductName() => ProductName;
 
         public void AddUnits(int units)
         {
-            if(units < 0)
+            if (units < 0)
             {
                 throw new OrderingDomainException("Invalid unit");
             }
 
-            _units += units;
+            Units += units;
         }
     }
 }

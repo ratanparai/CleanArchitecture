@@ -26,12 +26,12 @@ namespace CleanArchitecture.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
+                    OrderDate = table.Column<DateTime>(nullable: false),
                     Address_Street = table.Column<string>(nullable: true),
                     Address_City = table.Column<string>(nullable: true),
                     Address_State = table.Column<string>(nullable: true),
                     Address_Country = table.Column<string>(nullable: true),
-                    Address_ZipCode = table.Column<string>(nullable: true),
-                    OrderDate = table.Column<DateTime>(nullable: false)
+                    Address_ZipCode = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -44,11 +44,11 @@ namespace CleanArchitecture.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: false),
-                    OrderId = table.Column<int>(nullable: true),
                     ProductName = table.Column<string>(nullable: false),
                     UnitPrice = table.Column<decimal>(nullable: false),
-                    Units = table.Column<int>(nullable: false)
+                    Units = table.Column<int>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false),
+                    OrderId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -7,7 +7,7 @@ namespace CleanArchitecture.Core.AggregatesModel.OrderAggregate
 {
     public class Order : Entity, IAggregateRoot
     {
-        private DateTime _orderDate;
+        public DateTime OrderDate { get; private set; }
 
         public Address Address { get; private set; }
 
@@ -22,7 +22,7 @@ namespace CleanArchitecture.Core.AggregatesModel.OrderAggregate
         public Order(Address address) : this()
         {
             Address = address;
-            _orderDate = DateTime.UtcNow;
+            OrderDate = DateTime.UtcNow;
         }
 
         public void AddProductItem(int productId, string productName, decimal unitPrice, int units = 1)
@@ -42,7 +42,7 @@ namespace CleanArchitecture.Core.AggregatesModel.OrderAggregate
 
         public decimal GetTotal()
         {
-            return _orderItems.Sum(o => o.GetUnitPrice() * o.GetUnits());
+            return _orderItems.Sum(o => o.UnitPrice * o.Units);
         }
     }
 }
